@@ -50,7 +50,30 @@ const Calendar = () => {
                         <td><a href="day.html">
                             <div className="calendar-day">7</div>
                         </a></td>
-                        <td ><a href="day.html">
+                        <td><a href="day.html">
+                            <div className="calendar-day">8</div>
+                        </a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="day.html">
+                            <div className="calendar-day">2</div>
+                        </a></td>
+                        <td><a href="day.html">
+                            <div className="calendar-day">3</div>
+                        </a></td>
+                        <td><a href="day.html">
+                            <div className="calendar-day">4</div>
+                        </a></td>
+                        <td><a href="day.html">
+                            <div className="calendar-day">5</div>
+                        </a></td>
+                        <td><a href="day.html">
+                            <div className="calendar-day">6</div>
+                        </a></td>
+                        <td><a href="day.html">
+                            <div className="calendar-day">7</div>
+                        </a></td>
+                        <td><a href="day.html">
                             <div className="calendar-day">8</div>
                         </a></td>
                     </tr>
