@@ -10,6 +10,7 @@ import Home from "./pages/Home";
 import Register from "./pages/Register";
 import Calendar from "./pages/Calendar";
 import Exercises from "./pages/Exercises";
+import ExercisesForDay from "./pages/ExercisesForDay";
 
 
 const App = () => {
@@ -36,6 +37,7 @@ const App = () => {
                 <Route path="/register" element={<Register />} />
                 <Route path="/calendar" element={<Calendar />} />
                 <Route path="/exercises" element={<Exercises />} />
+                <Route path="/exercisesforday" element={<ExercisesForDay/>} />
             </Routes>
         </Router>
     );
