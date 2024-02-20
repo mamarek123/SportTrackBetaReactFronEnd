@@ -1,0 +1,56 @@
+/* Calendar.css */
+
+/* This centers the calendar in the middle of the page and sets its width */
+.calendar-container {
+    width: 80%;
+    margin: 0 auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Adds a subtle shadow */
+    background-color: white; /* White background for the calendar */
+    padding: 20px;
+    border-radius: 10px; /* Rounded corners */
+}
+
+/* Styles for the table itself */
+.table {
+    width: 100%; /* Ensures the table stretches to fill the container */
+    margin-bottom: 0; /* Removes the default bottom margin */
+}
+
+/* Table header styles */
+.thead-dark th {
+    background-color: #343a40; /* Dark gray background */
+    color: white; /* White text */
+    border: none; /* No borders */
+}
+
+/* Calendar day cell styles */
+.calendar-day {
+    display: block;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    color: #212529; /* Bootstrap's default text color */
+    border-radius: 0.25rem; /* Rounded corners for calendar day cells */
+    transition: background-color 0.3s;
+}
+
+.calendar-day:hover {
+    background-color: #f8f9fa; /* A light gray background on hover */
+    cursor: pointer;
+}
+
+/* Ensures that empty cells don't have hover effects and are not clickable */
+.calendar-day-empty {
+    background-color: transparent;
+    pointer-events: none;
+}
+
+/* Adjusts link styling within the table */
+.table a {
+    color: inherit; /* Inherits the color from the parent */
+    text-decoration: none; /* No underline */
+}
+
+.table a:hover {
+    text-decoration: none; /* No underline on hover */
+}
