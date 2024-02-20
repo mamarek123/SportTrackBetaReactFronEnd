@@ -114,8 +114,13 @@ const Calendar = () => {
     let day = 1;
     const numRows = Math.ceil((days + startDay) / 7);
 
-    for (let i = 0; i < numRows; i++) {
+    const navigateDay = (year, month, day) => {
+        // Correctly formats the date for navigation
+        const dateString = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+        navigate(`/ExercisesForDay?date=${dateString}`);
+    };
 
+    for (let i = 0; i < numRows; i++) {
         const week = [];
         for (let j = 0; j < 7; j++) {
             if ((i === 0 && j < startDay) || day > days) {
@@ -123,9 +128,9 @@ const Calendar = () => {
             } else {
                 week.push(
                     <td key={`${year}-${month + 1}-${day}`}>
-                        <a href={`day.html?date=${year}-${month + 1}-${day}`}>
-                            <div className="calendar-day">{day}</div>
-                        </a>
+                        <div className="calendar-day" onClick={() => navigateDay(year, month, day)}>
+                            {day}
+                        </div>
                     </td>
                 );
                 day++;
@@ -133,6 +138,7 @@ const Calendar = () => {
         }
         weeks.push(<tr key={`week-${i}`}>{week}</tr>);
     }
+
     const monthNames = ["January", "February", "March", "April", "May", "June",
         "July", "August", "September", "October", "November", "December"];
 
