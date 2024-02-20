@@ -10,6 +10,8 @@ export default function Navbar({isLoggedIn, handleLogout}) {
         navigate('/login');
     };
 
+    const currentDate = new Date().toISOString().slice(0, 10); // Gets date in YYYY-MM-DD format
+
     const username = JSON.parse(localStorage.getItem('user'));
 
     return (
@@ -22,7 +24,8 @@ export default function Navbar({isLoggedIn, handleLogout}) {
                             {isLoggedIn && (
                                 <>
                                     <li className="nav-item">
-                                        <Link className="nav-link active" to="/Calendar">Calendar</Link>
+                                        {/*<Link className="nav-link active" to="/Calendar">Calendar</Link>*/}
+                                        <Link className="nav-link active" to={`/Calendar?date=${currentDate}`}>Calendar</Link>
                                     </li>
                                     <li className="nav-item">
                                         <Link className="nav-link active" to="/Exercises">Exercises</Link>

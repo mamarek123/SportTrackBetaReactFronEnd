@@ -54,3 +54,17 @@
 .table a:hover {
     text-decoration: none; /* No underline on hover */
 }
+
+.month-navigation {
+    margin-bottom: 20px; /* Adds some space below the navigation bar */
+}
+
+/* Ensure the buttons don't grow and keep the title centered */
+.month-navigation button {
+    flex-shrink: 0;
+}
+
+/* Center the month and year title more effectively in available space */
+.month-navigation h2 {
+    margin: 0 20px; /* Adds some margin to prevent touching the buttons */
+}
