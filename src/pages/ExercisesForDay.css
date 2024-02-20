@@ -1,0 +1,35 @@
+.exercise-table-container {
+    width: 80%; /* Set width to 80% of the parent container */
+    margin: 0 auto; /* Center the table on the page */
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* subtle shadow around the container */
+    background: white; /* white background for the container */
+    border-radius: 8px; /* rounded corners */
+    overflow: hidden; /* ensures nothing spills out of the container */
+}
+
+.exercise-table-container h2 {
+    text-align: center;
+    /* centers the title */
+    margin-bottom: 1em; /* space below the title */
+    color: #333; /* dark grey color for the text */
+    font-size: 1.5em; /* slightly larger font size */
+    border-bottom: 2px solid #dee2e6; /* line under the title */
+    padding-bottom: 0.5em; /* space between title and underline */
+}
+
+.table {
+    width: 100%;
+    /* ensures the table stretches to the width of its container */
+    max-width: 100%; /* ensures the table doesn't exceed the width of its container */
+    margin-bottom: 1rem;
+    background-color: transparent;
+}
+
+.table th,
+.table td {
+    padding: 0.75rem;
+    /* padding inside each table cell */
+    vertical-align: top; /* aligns content to the top of the cell */
+    border-top: 1px solid #dee2e6; /* border for the top of each cell */
+}
