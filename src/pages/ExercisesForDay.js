@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 import axios from 'axios'; // Ensure you have axios installed
 import "./ExercisesForDay.css";
 
@@ -20,7 +20,6 @@ export default function ExercisesForDay() {
 
     useEffect(() => {
         const fetchTrainings = async () => {
-            console.log(localStorage.getItem('token'))
             if (isValidDate(dateParam)) {
                 const dateParts = dateParam.split('-'); // Assuming dateParam is 'YYYY-MM-DD'
                 try {
@@ -52,14 +51,11 @@ export default function ExercisesForDay() {
             return;
         }
 
-        // Assuming newTraining.dateTime is correctly set; otherwise, use new Date().toISOString()
-        // Extract the date from the URL
+
         const dateFromUrl = new URLSearchParams(window.location.search).get('date');
 
-        // Optionally, append a time part if your backend requires a full dateTime format
-        // For example, assuming the start of the day: `${dateFromUrl}T00:00:00`
-        console.log(dateFromUrl);
-        const dateTime = `${dateFromUrl}T05:00:00`; // Adjust time part as needed
+
+        const dateTime = `${dateFromUrl}T05:00:00`;
 
         const trainingData = {
             exerciseName: newTraining.exerciseName,
@@ -76,15 +72,10 @@ export default function ExercisesForDay() {
                 }
             });
 
-            console.log('Training added successfully:', response.data);
-            // Update UI accordingly...
-            // Maybe clear the form or show a success message
-            // setNewTraining({exerciseName: '', repsAndWeights: '', note: '', dateTime: ''}); // Clear form
-            // Or fetch and update the list of trainings, etc.
             window.location.reload();
         } catch (error) {
             console.error('Failed to add new training:', error);
-            // Handle error, e.g., show an error message
+            alert('Failed to add training. Please check console for details.');
         }
     };
 
@@ -137,7 +128,11 @@ export default function ExercisesForDay() {
                 <tbody>
                 {trainings.map((training, index) => (
                     <tr key={index}>
-                        <td>{training.exerciseName}</td>
+                        <td>
+                            <Link to={`/Exercise?name=${encodeURIComponent(training.exerciseName)}`}>
+                                {training.exerciseName}
+                            </Link>
+                        </td>
                         <td>{training.repsAndWeights}</td>
                         <td>{training.note}</td>
                         <td>

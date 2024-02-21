@@ -24,7 +24,7 @@ export default function Register() {
             },
             (error) => {
                 console.log(error);
-                // Handle error response (e.g., show an error message)
+                alert('Failed to register.');
             }
         );
     };
