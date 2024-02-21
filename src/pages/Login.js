@@ -17,7 +17,7 @@ export default function Login() {
             },
             (error) => {
                 console.log(error);
-                // Handle error response (e.g., show an error message)
+                alert('Failed to login');
             }
         );
     };

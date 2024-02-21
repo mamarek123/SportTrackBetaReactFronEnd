@@ -1,0 +1,57 @@
+.exercise-table-container {
+    width: 80%;
+    margin: 0 auto; /* Centers the table on the page */
+    padding: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); /* Adds a subtle shadow around the table */
+    background: white; /* Assuming you want a white background */
+}
+
+.exercise-table-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 36px; /* Adjust font size as needed */
+    border-bottom: 1px solid #ddd; /* Adds a light line under the title */
+    padding-bottom: 10px;
+}
+
+.table {
+    width: 100%; /* Makes the table use all the available space of its container */
+    margin-bottom: 20px;
+    border-collapse: collapse;
+}
+
+.table th,
+.table td {
+    text-align: left;
+    padding: 8px;
+    border: 1px solid #ddd; /* Adds a border to each cell */
+    font-size: 16px; /* Adjust font size as needed */
+}
+
+.table thead tr th{
+    background-color: #343a40; /* Dark gray background */
+    color: #ffffff; /* White text color */
+    border-bottom: 2px solid #dee2e6; /* Solid border for a bit of depth, can remove if not needed */
+}
+
+
+.table thead th {
+    background-color: #f8f9fa; /* Light grey background for the table header */
+    color: #495057; /* Dark grey color for the header text */
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(0,0,0,.05); /* Zebra striping for odd rows */
+}
+
+/* If you want to add responsiveness to your table */
+@media (max-width: 768px) {
+    .exercise-table-container {
+        width: 95%; /* Slightly smaller width on smaller screens */
+    }
+
+    .table {
+        display: block;
+        overflow-x: auto; /* Allows table to scroll horizontally on small screens */
+    }
+}

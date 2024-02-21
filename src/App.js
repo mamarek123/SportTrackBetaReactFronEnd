@@ -11,6 +11,7 @@ import Register from "./pages/Register";
 import Calendar from "./pages/Calendar";
 import Exercises from "./pages/Exercises";
 import ExercisesForDay from "./pages/ExercisesForDay";
+import Exercise from"./pages/Exercise"
 
 
 const App = () => {
@@ -38,6 +39,7 @@ const App = () => {
                 <Route path="/calendar" element={<Calendar />} />
                 <Route path="/exercises" element={<Exercises />} />
                 <Route path="/exercisesforday" element={<ExercisesForDay/>} />
+                <Route path="/exercise" element={<Exercise/>} />
             </Routes>
         </Router>
     );
