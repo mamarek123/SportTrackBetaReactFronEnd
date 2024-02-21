@@ -47,40 +47,76 @@ export default function ExercisesForDay() {
 
 
     const handleAddTraining = async () => {
-        // Hardcoded training data as per your request
+        if (!newTraining.exerciseName || !newTraining.repsAndWeights || !newTraining.note) {
+            alert('Please fill in all fields');
+            return;
+        }
+
+        // Assuming newTraining.dateTime is correctly set; otherwise, use new Date().toISOString()
+        // Extract the date from the URL
+        const dateFromUrl = new URLSearchParams(window.location.search).get('date');
+
+        // Optionally, append a time part if your backend requires a full dateTime format
+        // For example, assuming the start of the day: `${dateFromUrl}T00:00:00`
+        console.log(dateFromUrl);
+        const dateTime = `${dateFromUrl}T05:00:00`; // Adjust time part as needed
+
         const trainingData = {
-            exerciseName: "Squats",
-            repsAndWeights: "3 sets of 10 reps @ 100kg",
-            note: "Felt strong, keep same weight next session.",
-            dateTime: "2024-02-21T10:00:00" // Specific date and time
+            exerciseName: newTraining.exerciseName,
+            repsAndWeights: newTraining.repsAndWeights,
+            note: newTraining.note,
+            dateTime: dateTime
         };
 
         try {
             const response = await axios.post('http://localhost:8080/trainings/add', trainingData, {
                 headers: {
-                    Authorization: `Bearer ${localStorage.getItem('token')}`, // Assuming the token is in localStorage
+                    Authorization: `Bearer ${localStorage.getItem('token')}`,
                     'Content-Type': 'application/json'
                 }
             });
 
             console.log('Training added successfully:', response.data);
-            // Here, you might want to update your UI to reflect the added training
-            // For example, by updating state or redirecting the user
+            // Update UI accordingly...
+            // Maybe clear the form or show a success message
+            // setNewTraining({exerciseName: '', repsAndWeights: '', note: '', dateTime: ''}); // Clear form
+            // Or fetch and update the list of trainings, etc.
+            window.location.reload();
         } catch (error) {
             console.error('Failed to add new training:', error);
-            // Here, you might want to handle the error, such as displaying a message to the user
+            // Handle error, e.g., show an error message
         }
     };
-    const handleModify = (trainingId) => {
-        // Implement logic to modify training
-        console.log('Modifying training:', trainingId);
+
+    const handleDelete = async (exerciseName) => {
+        // Extract the date from the URL
+        const dateFromUrl = new URLSearchParams(window.location.search).get('date');
+        const [year, month, day] = dateFromUrl.split('-').map(num => parseInt(num, 10));
+
+        const deleteTrainingData = {
+            exerciseName,
+            year,
+            month: month ,
+            day,
+        };
+
+        try {
+            await axios.delete('http://localhost:8080/trainings/delete', {
+                data: deleteTrainingData, // Axios DELETE requests require data to be in the 'data' field
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('token')}`,
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            console.log('Training deleted successfully');
+            window.location.reload(); // Reload to update the list of trainings
+        } catch (error) {
+            console.error('Failed to delete training:', error);
+            alert('Failed to delete training. Please check console for details.');
+        }
     };
 
-    const handleDelete = (trainingId) => {
-        // Implement logic to delete training
-        console.log('Deleting training:', trainingId);
-        // Fetch trainings to refresh the list
-    };
 
     const formattedDate = isValidDate(dateParam)
         ? new Date(dateParam).toLocaleDateString()
@@ -105,8 +141,7 @@ export default function ExercisesForDay() {
                         <td>{training.repsAndWeights}</td>
                         <td>{training.note}</td>
                         <td>
-                            <button className="btn btn-primary" onClick={() => handleModify(training.dateTime)}>Modify</button>{' '}
-                            <button className="btn btn-danger" onClick={() => handleDelete(training.dateTime)}>Delete</button>
+                            <button className="btn btn-danger" onClick={() => handleDelete(training.exerciseName)}>Delete</button>
                         </td>
                     </tr>
                 ))}
