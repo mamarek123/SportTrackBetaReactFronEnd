@@ -20,6 +20,7 @@ export default function ExercisesForDay() {
 
     useEffect(() => {
         const fetchTrainings = async () => {
+            console.log(localStorage.getItem('token'))
             if (isValidDate(dateParam)) {
                 const dateParts = dateParam.split('-'); // Assuming dateParam is 'YYYY-MM-DD'
                 try {
@@ -34,6 +35,7 @@ export default function ExercisesForDay() {
                         },
                     });
                     setTrainings(response.data);
+                    console.log('fetched' + response.data)
                 } catch (error) {
                     console.error("Failed to fetch trainings:", error);
                 }
@@ -45,39 +47,30 @@ export default function ExercisesForDay() {
 
 
     const handleAddTraining = async () => {
-        if (!newTraining.exerciseName || !newTraining.repsAndWeights || !newTraining.note) {
-            alert('Please fill in all fields');
-            return;
-        }
-
-        const dateTime = new Date().toISOString(); // Use the current date and time for simplicity
+        // Hardcoded training data as per your request
+        const trainingData = {
+            exerciseName: "Squats",
+            repsAndWeights: "3 sets of 10 reps @ 100kg",
+            note: "Felt strong, keep same weight next session.",
+            dateTime: "2024-02-21T10:00:00" // Specific date and time
+        };
 
         try {
-            const response = await axios.post('localhost:8080/trainings/add', {
-                exerciseName: newTraining.exerciseName,
-                repsAndWeights: newTraining.repsAndWeights,
-                note: newTraining.note,
-                dateTime: dateTime
-            }, {
+            const response = await axios.post('http://localhost:8080/trainings/add', trainingData, {
                 headers: {
-                    Authorization: `Bearer ${localStorage.getItem('token')}`, // Retrieve the JWT token from localStorage
+                    Authorization: `Bearer ${localStorage.getItem('token')}`, // Assuming the token is in localStorage
+                    'Content-Type': 'application/json'
                 }
             });
 
-            // Assuming the backend responds with the added training data
-            console.log('Training added:', response.data);
-
-            // Clear the input fields
-            setNewTraining({exerciseName: '', repsAndWeights: '', note: ''});
-
-            // Optionally, refresh the trainings list to include the new training
-            // You might want to create a function to fetch trainings and call it here
+            console.log('Training added successfully:', response.data);
+            // Here, you might want to update your UI to reflect the added training
+            // For example, by updating state or redirecting the user
         } catch (error) {
             console.error('Failed to add new training:', error);
-            alert('Failed to add training. Please try again.');
+            // Here, you might want to handle the error, such as displaying a message to the user
         }
     };
-
     const handleModify = (trainingId) => {
         // Implement logic to modify training
         console.log('Modifying training:', trainingId);
