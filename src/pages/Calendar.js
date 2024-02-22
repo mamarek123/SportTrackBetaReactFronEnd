@@ -1,14 +1,13 @@
 import './calendar.css'
 import React from 'react';
-import { useLocation, useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Calendar = () => {
     const location = useLocation();
-    const navigate = useNavigate(); // Use useNavigate hook for navigation
+    const navigate = useNavigate();
     const searchParams = new URLSearchParams(location.search);
     const dateParam = searchParams.get('date');
 
-    // If 'date' param is present, create a Date object; otherwise, use current date
     const date = dateParam ? new Date(dateParam) : new Date();
 
     const daysInMonth = (year, month) => new Date(year, month + 1, 0).getDate();
@@ -24,7 +23,7 @@ const Calendar = () => {
     const navigateDay = (year, month, day) => {
 
         const newDate = new Date(year, month, day);
-        const newDateParam = newDate.toISOString().slice(0, 10); // Format to YYYY-MM-DD
+        const newDateParam = newDate.toISOString().slice(0, 10);
         navigate(`/ExercisesForDay?date=${newDateParam}`); // Navigate to the new date
     };
     const numRows = Math.ceil((days + startDay) / 7);

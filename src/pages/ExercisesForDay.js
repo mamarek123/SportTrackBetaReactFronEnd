@@ -115,7 +115,7 @@ export default function ExercisesForDay() {
 
     return (
         <div className="table-container">
-            <h2>Lista ćwiczeń wykonanych w dniu {formattedDate}</h2>
+            <h2>Here's what you trained on {formattedDate}</h2>
             <table className="table table-striped">
                 <thead>
                 <tr>

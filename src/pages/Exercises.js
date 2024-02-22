@@ -56,7 +56,7 @@ const Exercises = () => {
                 <thead className="custom-table-header">
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Nazwa ćwiczenia</th>
+                    <th scope="col">Exercise:</th>
                 </tr>
                 </thead>
                 <tbody>
