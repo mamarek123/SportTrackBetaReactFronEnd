@@ -30,7 +30,7 @@ export default function Register() {
     };
 
     return (
-        <div className="container">
+        <div className="login-container">
             <h2>Register</h2>
             <form onSubmit={handleRegister}>
                 <div className="mb-3">

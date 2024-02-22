@@ -114,7 +114,7 @@ export default function ExercisesForDay() {
         : 'Invalid date';
 
     return (
-        <div className="exercise-table-container">
+        <div className="table-container">
             <h2>Lista ćwiczeń wykonanych w dniu {formattedDate}</h2>
             <table className="table table-striped">
                 <thead>

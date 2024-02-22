@@ -9,6 +9,39 @@
     border-radius: 8px; /* Rounded corners for a modern look */
 }
 
+.login-container {
+    animation: fadeInUp 2s ease-out;
+    text-align: center;
+    padding: 40px;
+    max-width: 800px; /* Centers the content on wider screens */
+    margin: 20px auto; /* Provides space above and below the container, adjust as needed */
+    background-color: #cccccc; /* Light background color */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Soft shadow for depth */
+    border-radius: 8px; /* Rounded corners for a modern look */
+}
+
+.table-container {
+    animation: fadeInUp 2s ease-out;
+    text-align: center;
+    padding: 40px;
+    max-width: 80%; /* Centers the content on wider screens */
+    margin: 20px auto; /* Provides space above and below the container, adjust as needed */
+    background-color: #cccccc; /* Light background color */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Soft shadow for depth */
+    border-radius: 8px; /* Rounded corners for a modern look */
+}
+
+.login-container {
+    animation: fadeInUp 2s ease-out;
+    text-align: center;
+    padding: 40px;
+    max-width: 800px; /* Centers the content on wider screens */
+    margin: 20px auto; /* Provides space above and below the container, adjust as needed */
+    background-color: #cccccc; /* Light background color */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Soft shadow for depth */
+    border-radius: 8px; /* Rounded corners for a modern look */
+}
+
 body {
     background-image: url('https://www.magic-gym.pl/images/oferta-zajecia-zorganizowane.jpg'); /* Path to your image */
     background-size: cover; /* Cover the entire page */

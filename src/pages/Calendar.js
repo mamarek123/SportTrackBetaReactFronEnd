@@ -64,7 +64,7 @@ const Calendar = () => {
 
     return (
         <div>
-            <section className="calendar-container">
+            <section className="table-container">
                 <div className="month-navigation d-flex justify-content-between align-items-center">
                     <button className="btn btn-outline-primary" onClick={() => navigateMonth(-1)}>{"< Prev"}</button>
                     <h2 className="flex-grow-1 text-center">{monthNames[month]} {year}</h2>

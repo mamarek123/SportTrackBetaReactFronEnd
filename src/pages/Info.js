@@ -15,7 +15,7 @@ export default function Home() {
                     <img src={'https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_1280.png'} alt="GitHub"
                          style={{marginRight: '10px'}}/>
                 </a>
-                <a href="https://www.linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.linkedin.com/in/marek-szkutnik-336a32271/" target="_blank" rel="noopener noreferrer">
                     <img
                         src={'https://thumbs.dreamstime.com/b/logo-ikony-linkedin-pi%C4%99knie-zaprojektowane-225149200.jpg'}
                         alt="LinkedIn"/>

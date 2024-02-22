@@ -25,7 +25,7 @@ const Exercises = () => {
     }, []);
 
     return (
-        <div className="container mt-2" style={{ maxWidth: '96%' }}>
+        <div className="table-container">
             <style>
                 {`
                     .custom-table-header {
@@ -51,7 +51,7 @@ const Exercises = () => {
                     }
                 `}
             </style>
-            <h2 style={{ color: 'white' }}>Ćwiczenia</h2>
+            <h2>Ćwiczenia</h2>
             <table className="table table-striped rounded-table shadow-table" style={{ backgroundColor: 'darkgray' }}>
                 <thead className="custom-table-header">
                 <tr>

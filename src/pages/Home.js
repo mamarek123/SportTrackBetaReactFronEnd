@@ -10,8 +10,8 @@ export default function Home() {
                 <h1>Unless You Do"</h1>
                 <h4>~Paulo Coelho</h4>
             </div>
-            <h2>Welcome to Our Gym</h2>
-            <p>Welcome to the ultimate fitness experience. Our gym offers state-of-the-art equipment, professional
+            <h2>Welcome to the Gym</h2>
+            <p>Welcome to the ultimate fitness experience. Our app offers state-of-the-art equipment, professional
                 training services, and a supportive community to help you achieve your fitness goals.</p>
             <h3>Track Your Progress</h3>
             <p>With our dedicated progress tracking app, you can monitor your workouts, set goals, and see your

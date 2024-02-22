@@ -12,6 +12,10 @@
     padding: 12px; /* Dodaje odstępy wewnątrz komórek */
 }
 
+h2{
+    color: #343a40;
+}
+
 .table thead {
     background-color: #f2f2f2; /* Jasnoszary kolor tła dla nagłówków */
 }

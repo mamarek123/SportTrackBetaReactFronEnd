@@ -104,7 +104,7 @@ export default function Exercise() {
     }, [exerciseName]);
 
     return (
-        <div className="exercise-details-container">
+        <div className="table-container">
             <h2>Exercise: {exerciseName}</h2>
             <table className="table table-striped">
                 <thead>
