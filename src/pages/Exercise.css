@@ -1,15 +1,15 @@
 .table {
     width: 95%;
-    margin: 20px auto; /* Centruje tabelę i dodaje odstęp od góry i dołu */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Dodaje subtelny cień */
-    border-collapse: collapse; /* Usuwa domyślne odstępy między komórkami */
-    border-radius: 10px; /* Zaokrąglone rogi tabeli */
-    overflow: hidden; /* Zapobiega wyświetlaniu się zawartości poza zaokrąglonymi rogami */
+    margin: 20px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-collapse: collapse;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 .table th, .table td {
     text-align: left;
-    padding: 12px; /* Dodaje odstępy wewnątrz komórek */
+    padding: 12px;
 }
 
 h2{
@@ -17,41 +17,41 @@ h2{
 }
 
 .table thead {
-    background-color: #f2f2f2; /* Jasnoszary kolor tła dla nagłówków */
+    background-color: #f2f2f2;
 }
 
 .table tbody tr:nth-child(odd) {
-    background-color: #ffffff; /* Biały kolor tła dla nieparzystych wierszy */
+    background-color: #ffffff;
 }
 
 .table tbody tr:nth-child(even) {
-    background-color: #f9f9f9; /* Bardziej jasnoszary kolor tła dla parzystych wierszy */
+    background-color: #f9f9f9;
 }
 
 .table tbody tr:hover {
-    background-color: #ddd; /* Kolor tła podczas najechania myszką */
+    background-color: #ddd;
 }
 
 .btn {
     border: none;
-    border-radius: 5px; /* Zaokrąglone krawędzie dla przycisków */
+    border-radius: 5px;
     padding: 10px;
-    cursor: pointer; /* Kursor wskazujący, że przycisk jest klikalny */
+    cursor: pointer;
 }
 
 .btn-success {
-    background-color: #4CAF50; /* Zielony kolor tła */
-    color: white; /* Biały tekst */
+    background-color: #4CAF50;
+    color: white;
 }
 
 .btn-danger {
-    background-color: #f44336; /* Czerwony kolor tła */
-    color: white; /* Biały tekst */
+    background-color: #f44336;
+    color: white;
 }
 
 .form-control {
     padding: 10px;
     margin: 5px 0;
     border: 1px solid #ccc;
-    border-radius: 5px; /* Zaokrąglone krawędzie dla pól formularza */
+    border-radius: 5px;
 }

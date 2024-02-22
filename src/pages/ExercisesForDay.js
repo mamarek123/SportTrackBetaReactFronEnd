@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import {Link, useLocation} from "react-router-dom";
-import axios from 'axios'; // Ensure you have axios installed
+import axios from 'axios';
 import "./ExercisesForDay.css";
 
 export default function ExercisesForDay() {
@@ -21,7 +21,7 @@ export default function ExercisesForDay() {
     useEffect(() => {
         const fetchTrainings = async () => {
             if (isValidDate(dateParam)) {
-                const dateParts = dateParam.split('-'); // Assuming dateParam is 'YYYY-MM-DD'
+                const dateParts = dateParam.split('-');
                 try {
                     const response = await axios.get('http://localhost:8080/trainings/ForDay', {
                         headers: {
@@ -80,20 +80,19 @@ export default function ExercisesForDay() {
     };
 
     const handleDelete = async (exerciseName) => {
-        // Extract the date from the URL
         const dateFromUrl = new URLSearchParams(window.location.search).get('date');
         const [year, month, day] = dateFromUrl.split('-').map(num => parseInt(num, 10));
 
         const deleteTrainingData = {
             exerciseName,
             year,
-            month: month ,
+            month: month,
             day,
         };
 
         try {
             await axios.delete('http://localhost:8080/trainings/delete', {
-                data: deleteTrainingData, // Axios DELETE requests require data to be in the 'data' field
+                data: deleteTrainingData,
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`,
                     'Content-Type': 'application/json',
@@ -101,7 +100,7 @@ export default function ExercisesForDay() {
             });
 
             console.log('Training deleted successfully');
-            window.location.reload(); // Reload to update the list of trainings
+            window.location.reload();
         } catch (error) {
             console.error('Failed to delete training:', error);
             alert('Failed to delete training. Please check console for details.');
@@ -136,15 +135,22 @@ export default function ExercisesForDay() {
                         <td>{training.repsAndWeights}</td>
                         <td>{training.note}</td>
                         <td>
-                            <button className="btn btn-danger" onClick={() => handleDelete(training.exerciseName)}>Delete</button>
+                            <button className="btn btn-danger"
+                                    onClick={() => handleDelete(training.exerciseName)}>Delete
+                            </button>
                         </td>
                     </tr>
                 ))}
                 <tr>
-                    <td><input type="text" className="form-control" value={newTraining.exerciseName} onChange={e => setNewTraining({...newTraining, exerciseName: e.target.value})} /></td>
-                    <td><input type="text" className="form-control" value={newTraining.repsAndWeights} onChange={e => setNewTraining({...newTraining, repsAndWeights: e.target.value})} /></td>
-                    <td><input type="text" className="form-control" value={newTraining.note} onChange={e => setNewTraining({...newTraining, note: e.target.value})} /></td>
-                    <td><button className="btn btn-success" onClick={handleAddTraining}>Add</button></td>
+                    <td><input type="text" className="form-control" value={newTraining.exerciseName}
+                               onChange={e => setNewTraining({...newTraining, exerciseName: e.target.value})}/></td>
+                    <td><input type="text" className="form-control" value={newTraining.repsAndWeights}
+                               onChange={e => setNewTraining({...newTraining, repsAndWeights: e.target.value})}/></td>
+                    <td><input type="text" className="form-control" value={newTraining.note}
+                               onChange={e => setNewTraining({...newTraining, note: e.target.value})}/></td>
+                    <td>
+                        <button className="btn btn-success" onClick={handleAddTraining}>Add</button>
+                    </td>
                 </tr>
                 </tbody>
             </table>

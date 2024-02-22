@@ -2,98 +2,98 @@
     animation: fadeInUp 2s ease-out;
     text-align: center;
     padding: 40px;
-    max-width: 800px; /* Centers the content on wider screens */
-    margin: 20px auto; /* Provides space above and below the container, adjust as needed */
-    background-color: #cccccc; /* Light background color */
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Soft shadow for depth */
-    border-radius: 8px; /* Rounded corners for a modern look */
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #cccccc;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    border-radius: 8px;
 }
 
 .login-container {
     animation: fadeInUp 2s ease-out;
     text-align: center;
     padding: 40px;
-    max-width: 800px; /* Centers the content on wider screens */
-    margin: 20px auto; /* Provides space above and below the container, adjust as needed */
-    background-color: #cccccc; /* Light background color */
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Soft shadow for depth */
-    border-radius: 8px; /* Rounded corners for a modern look */
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #cccccc;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    border-radius: 8px;
 }
 
 .table-container {
     animation: fadeInUp 2s ease-out;
     text-align: center;
     padding: 40px;
-    max-width: 80%; /* Centers the content on wider screens */
-    margin: 20px auto; /* Provides space above and below the container, adjust as needed */
-    background-color: #cccccc; /* Light background color */
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Soft shadow for depth */
-    border-radius: 8px; /* Rounded corners for a modern look */
+    max-width: 80%;
+    margin: 20px auto;
+    background-color: #cccccc;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
 }
 
 .login-container {
     animation: fadeInUp 2s ease-out;
     text-align: center;
     padding: 40px;
-    max-width: 800px; /* Centers the content on wider screens */
-    margin: 20px auto; /* Provides space above and below the container, adjust as needed */
-    background-color: #cccccc; /* Light background color */
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Soft shadow for depth */
-    border-radius: 8px; /* Rounded corners for a modern look */
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #cccccc;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    border-radius: 8px;
 }
 
 body {
     background-image: url('https://www.magic-gym.pl/images/oferta-zajecia-zorganizowane.jpg'); /* Path to your image */
-    background-size: cover; /* Cover the entire page */
-    background-position: center; /* Center the background image */
-    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .quote-container {
     display: flex;
     justify-content: center;
-    align-items: baseline; /* Adjust alignment to keep text aligned properly */
+    align-items: baseline;
     flex-wrap: wrap;
-    gap: 10px; /* Space between elements */
+    gap: 10px;
 }
 
 h1, h2, h3, h4 {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern, clean font */
-    font-weight: 600; /* Slightly bolder for readability */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 600;
 }
 
 h1 {
-    font-size: 2rem; /* Responsive font size */
-    color: #495057; /* Bright color for emphasis */
-    margin: 0.5em 0; /* Adjusted spacing */
+    font-size: 2rem;
+    color: #495057;
+    margin: 0.5em 0;
 }
 
 h4 {
     margin-top: 0;
-    font-size: 0.9rem; /* Adjusted for balance */
-    color: #555; /* Subdued color for contrast */
-    font-style: italic; /* Style for quotes */
+    font-size: 0.9rem;
+    color: #555;
+    font-style: italic;
 }
 
 h2, h3 {
     color: #333;
-    margin: 1em 0 0.5em; /* Clear section separation */
+    margin: 1em 0 0.5em;
 }
 
 p {
     color: #666;
-    font-size: 1rem; /* Readability */
-    line-height: 1.6; /* Better readability */
-    margin: 0.5em 0 1em; /* Consistency */
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0.5em 0 1em;
 }
 
 .cta-container {
     margin-top: 30px;
-    transition: transform 0.3s ease; /* Smooth hover effects */
+    transition: transform 0.3s ease;
 }
 
 .cta-container:hover {
-    transform: translateY(-5px); /* Lift effect on hover */
+    transform: translateY(-5px);
 }
 
 @keyframes fadeInUp {
@@ -106,5 +106,3 @@ p {
         transform: translateX(0);
     }
 }
-
-/* Additional global styles should be carefully managed to not affect the navbar */
