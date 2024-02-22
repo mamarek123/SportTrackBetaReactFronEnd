@@ -12,6 +12,7 @@ import Calendar from "./pages/Calendar";
 import Exercises from "./pages/Exercises";
 import ExercisesForDay from "./pages/ExercisesForDay";
 import Exercise from"./pages/Exercise"
+import Info from "./pages/Info"
 
 
 const App = () => {
@@ -34,6 +35,8 @@ const App = () => {
             <Navbar isLoggedIn={isLoggedIn}  handleLogout={handleLogout} />
             <Routes>
                 <Route path="/" element={<Home />} />
+                <Route path="/home" element={<Home />} />
+                <Route path="/info" element={<Info />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/calendar" element={<Calendar />} />
