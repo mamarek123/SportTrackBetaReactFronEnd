@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from "react-router-dom";
-import axios from 'axios'; // Ensure you have axios installed
-import "./Exercise.css"; // Make sure to create a corresponding CSS file
+import axios from 'axios';
+import "./Exercise.css";
 
 
 export default function Exercise() {
@@ -10,7 +10,7 @@ export default function Exercise() {
 
     const isValidDate = (dateString) => {
         const regEx = /^\d{4}\.\d{2}\.\d{2}$/;
-        if (!dateString.match(regEx)) return false; // Invalid format
+        if (!dateString.match(regEx)) return false;
         const [year, month, day] = dateString.split('.').map(num => parseInt(num, 10));
         const date = new Date(year, month - 1, day);
         return date.getFullYear() === year && date.getMonth() + 1 === month && date.getDate() === day;
@@ -33,7 +33,7 @@ export default function Exercise() {
         const dateTime = new Date(year, month - 1, day).toISOString();
 
         const trainingData = {
-            exerciseName: exerciseName, // Taken from URL parameter
+            exerciseName: exerciseName,
             repsAndWeights: newTraining.repsAndWeights,
             note: newTraining.note,
             dateTime: dateTime,
@@ -58,7 +58,7 @@ export default function Exercise() {
         const [year, month, day] = dateString.split('.').map(num => parseInt(num, 10));
 
         const deleteTrainingData = {
-            exerciseName: exerciseName, // From URL parameter
+            exerciseName: exerciseName,
             year: year,
             month: month,
             day: day,

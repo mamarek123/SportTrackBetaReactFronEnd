@@ -1,6 +1,6 @@
 // src/pages/Login.js
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, {useState} from 'react';
+import {useNavigate} from 'react-router-dom';
 import AuthService from '../services/AuthService';
 
 export default function Login() {
@@ -12,8 +12,8 @@ export default function Login() {
         e.preventDefault();
         AuthService.login(username, password).then(
             () => {
-                navigate('/'); // Redirect to home page after successful login
-                window.location.reload(); // Reload to apply the new auth state
+                navigate('/');
+                window.location.reload();
             },
             (error) => {
                 console.log(error);

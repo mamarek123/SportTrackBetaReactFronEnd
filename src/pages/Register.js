@@ -1,6 +1,6 @@
 // src/pages/Register.js
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, {useState} from 'react';
+import {useNavigate} from 'react-router-dom';
 import AuthService from '../services/AuthService';
 
 export default function Register() {
@@ -12,7 +12,7 @@ export default function Register() {
     const handleRegister = (e) => {
         e.preventDefault();
         if (password !== passwordConfirm) {
-            // Handle the password mismatch scenario
+
             alert("Passwords do not match.");
             return;
         }
@@ -20,7 +20,7 @@ export default function Register() {
         AuthService.register(username, password).then(
             (response) => {
                 console.log(response);
-                navigate('/login'); // Redirect to login page after successful registration
+                navigate('/login');
             },
             (error) => {
                 console.log(error);

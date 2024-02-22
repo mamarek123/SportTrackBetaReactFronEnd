@@ -17,6 +17,7 @@ export default function Home() {
             <p>With our dedicated progress tracking app, you can monitor your workouts, set goals, and see your
                 improvements over time. Stay motivated and on track with easy-to-use features tailored to your fitness
                 journey.</p>
+
             <div className="cta-container">
                 <iframe width="560" height="315"
                         src="https://www.youtube.com/embed/eaRQF-7hhmo?si=XSOe6xwMU5zfKtRU&amp;controls=0"
