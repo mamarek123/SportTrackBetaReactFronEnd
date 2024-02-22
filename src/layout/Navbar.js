@@ -45,7 +45,7 @@ export default function Navbar({isLoggedIn, handleLogout}) {
                             ) : (
                                 <div>
                                     <span className="text-white">Welcome {username} </span>
-                                    <button onClick={onLogout} className="btn btn-outline-success">Logout</button>
+                                    <button onClick={onLogout} className="btn btn-outline-danger">Logout</button>
                                 </div>
                             )}
                         </div>
