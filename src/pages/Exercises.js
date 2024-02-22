@@ -51,7 +51,7 @@ const Exercises = () => {
                     }
                 `}
             </style>
-            <h2>Ćwiczenia</h2>
+            <h2>Here are all exercises you saved</h2>
             <table className="table table-striped rounded-table shadow-table" style={{ backgroundColor: 'darkgray' }}>
                 <thead className="custom-table-header">
                 <tr>
