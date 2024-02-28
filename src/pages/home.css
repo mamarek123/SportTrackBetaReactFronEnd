@@ -31,15 +31,27 @@
     border-radius: 8px;
 }
 
+
 .login-container {
     animation: fadeInUp 2s ease-out;
     text-align: center;
-    padding: 40px;
-    max-width: 800px;
-    margin: 20px auto;
+    padding: 20px;
+    width: 90%; /* Use width instead of max-width for better control */
+    max-width: 800px; /* Maximum width to maintain readability */
     background-color: #cccccc;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
+    margin: auto; /* This helps in centering vertically if there's enough space */
+    max-height: 90vh; /* Maximum height */
+    overflow-y: auto; /* Enable scrolling if the content exceeds the viewport height */
+}
+
+/* Responsive adjustments for smaller screens */
+@media screen and (max-width: 768px) {
+    .login-container {
+        padding: 15px; /* Adjust padding for even smaller screens */
+        width: 95%; /* Allow more width for very small devices */
+    }
 }
 
 body {

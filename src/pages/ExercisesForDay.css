@@ -45,13 +45,13 @@
 }
 
 
-@media (max-width: 768px) {
-    .exercise-table-container {
-        width: 95%;
-    }
+/*@media (max-width: 768px) {*/
+/*    .exercise-table-container {*/
+/*        width: 95%;*/
+/*    }*/
 
-    .table {
-        display: block;
-        overflow-x: auto;
-    }
-}
+/*    .table {*/
+/*        display: block;*/
+/*        overflow-x: auto;*/
+/*    }*/
+/*}*/

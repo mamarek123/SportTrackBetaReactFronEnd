@@ -13,6 +13,7 @@ import Exercises from "./pages/Exercises";
 import ExercisesForDay from "./pages/ExercisesForDay";
 import Exercise from"./pages/Exercise"
 import Info from "./pages/Info"
+import NavbarExample from "./layout/NavbarExample";
 
 
 const App = () => {
@@ -32,7 +33,7 @@ const App = () => {
 
     return (
         <Router>
-            <Navbar isLoggedIn={isLoggedIn}  handleLogout={handleLogout} />
+            <NavbarExample isLoggedIn={isLoggedIn}  handleLogout={handleLogout} />
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/home" element={<Home />} />

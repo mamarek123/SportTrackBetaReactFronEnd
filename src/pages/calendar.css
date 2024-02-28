@@ -1,70 +1,124 @@
-/* Calendar.css */
 
-/* This centers the calendar in the middle of the page and sets its width */
 .calendar-container {
     width: 80%;
     margin: 0 auto;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Adds a subtle shadow */
-    background-color: white; /* White background for the calendar */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    background-color: white;
     padding: 20px;
-    border-radius: 10px; /* Rounded corners */
+    border-radius: 10px;
 }
 
-/* Styles for the table itself */
+
 .table {
-    width: 100%; /* Ensures the table stretches to fill the container */
-    margin-bottom: 0; /* Removes the default bottom margin */
+    width: 100%;
+    margin-bottom: 0;
 }
 
-/* Table header styles */
+
 .thead-dark th {
-    background-color: #343a40; /* Dark gray background */
-    color: white; /* White text */
-    border: none; /* No borders */
+    background-color: #343a40;
+    color: white;
+    border: none;
 }
 
-/* Calendar day cell styles */
+
 .calendar-day {
     display: block;
     padding: 10px;
     text-align: center;
     text-decoration: none;
-    color: #212529; /* Bootstrap's default text color */
-    border-radius: 0.25rem; /* Rounded corners for calendar day cells */
+    color: #212529;
+    border-radius: 0.25rem;
     transition: background-color 0.3s;
 }
 
 .calendar-day:hover {
-    background-color: #f8f9fa; /* A light gray background on hover */
+    background-color: #f8f9fa;
     cursor: pointer;
 }
 
-/* Ensures that empty cells don't have hover effects and are not clickable */
+
 .calendar-day-empty {
     background-color: transparent;
     pointer-events: none;
 }
 
-/* Adjusts link styling within the table */
+
 .table a {
-    color: inherit; /* Inherits the color from the parent */
-    text-decoration: none; /* No underline */
+    color: inherit;
+    text-decoration: none;
 }
 
 .table a:hover {
-    text-decoration: none; /* No underline on hover */
+    text-decoration: none;
 }
 
 .month-navigation {
-    margin-bottom: 20px; /* Adds some space below the navigation bar */
+    margin-bottom: 20px;
 }
 
-/* Ensure the buttons don't grow and keep the title centered */
+
 .month-navigation button {
     flex-shrink: 0;
 }
 
-/* Center the month and year title more effectively in available space */
 .month-navigation h2 {
-    margin: 0 20px; /* Adds some margin to prevent touching the buttons */
+    margin: 0 20px;
+}
+
+/* Existing styles for the calendar */
+.table-container {
+    /* Ensures the container takes the full width available by default */
+    width: 100%;
+}
+
+.table {
+    width: 100%; /* Ensures the table takes the full width of its container */
+    table-layout: fixed; /* Helps in evenly distributing column widths irrespective of cell contents */
+}
+
+
+
+/* Existing styles */
+.month-navigation {
+    display: flex;
+    justify-content: between;
+    align-items: center;
+    width: 100%;
+}
+
+.month-navigation .btn, .month-navigation h2 {
+    /* Ensuring buttons and month name have appropriate initial sizes */
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .month-navigation .btn {
+        padding: 5px 10px; /* Reduces padding to fit smaller screens */
+        font-size: 14px; /* Reduces font size to ensure text fits */
+    }
+
+    .month-navigation h2 {
+        font-size: 16px; /* Reduces the font size of the month name */
+        margin: 0 10px; /* Adjusts margin to ensure it fits in the available space */
+        flex-grow: 1; /* Allows the month name to grow and fill available space */
+        text-align: center; /* Ensures the month name is centered */
+    }
+
+    /* Adjusting the layout to ensure everything fits */
+    .table-container {
+        width: 98%;
+        margin: 0 auto;
+        overflow: hidden; /* Adds overflow hidden to prevent potential overflow issues */
+    }
+
+    .table {
+        width: 98%;
+        margin: 0 auto;
+    }
+
+    .calendar-day, .calendar-day-empty {
+        padding: 5px; /* Adjusts padding for each day to ensure content fits */
+        font-size: smaller; /* Adjusts font size for better fit on smaller screens */
+    }
 }

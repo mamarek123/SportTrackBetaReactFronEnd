@@ -10,7 +10,7 @@ const Exercises = () => {
         const fetchExercises = async () => {
             try {
                 const token = localStorage.getItem('token');
-                const response = await axios.get('http://localhost:8080/trainings/user/exercises', {
+                const response = await axios.get('http://ec2-3-70-127-40.eu-central-1.compute.amazonaws.com:8000/trainings/user/exercises', {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },

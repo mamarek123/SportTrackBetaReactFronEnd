@@ -23,7 +23,7 @@ export default function ExercisesForDay() {
             if (isValidDate(dateParam)) {
                 const dateParts = dateParam.split('-');
                 try {
-                    const response = await axios.get('http://localhost:8080/trainings/ForDay', {
+                    const response = await axios.get('http://ec2-3-70-127-40.eu-central-1.compute.amazonaws.com:8000/trainings/ForDay', {
                         headers: {
                             Authorization: `Bearer ${localStorage.getItem('token')}`,
                         },
@@ -65,7 +65,7 @@ export default function ExercisesForDay() {
         };
 
         try {
-            const response = await axios.post('http://localhost:8080/trainings/add', trainingData, {
+            const response = await axios.post('http://ec2-3-70-127-40.eu-central-1.compute.amazonaws.com:8000/trainings/add', trainingData, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`,
                     'Content-Type': 'application/json'
@@ -91,7 +91,7 @@ export default function ExercisesForDay() {
         };
 
         try {
-            await axios.delete('http://localhost:8080/trainings/delete', {
+            await axios.delete('http://ec2-3-70-127-40.eu-central-1.compute.amazonaws.com:8000/trainings/delete', {
                 data: deleteTrainingData,
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`,

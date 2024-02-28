@@ -1,7 +1,7 @@
 // services/AuthService.js
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8080/'; // Update with your API's base URL
+const API_URL = 'http://ec2-3-70-127-40.eu-central-1.compute.amazonaws.com:8000/'; // Update with your API's base URL
 
 class AuthService {
     login(username, password) {
