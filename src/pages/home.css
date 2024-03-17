@@ -5,7 +5,7 @@
     max-width: 800px;
     margin: 20px auto;
     background-color: #cccccc;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
 }
 
@@ -16,19 +16,78 @@
     max-width: 800px;
     margin: 20px auto;
     background-color: #cccccc;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
 }
 
 .table-container {
-    animation: fadeInUp 2s ease-out;
+    animation: fadeInUp 1s ease-out;
     text-align: center;
     padding: 40px;
     max-width: 80%;
     margin: 20px auto;
-    background-color: #cccccc;
+    background-color: rgba(204, 204, 204); /* Updated for transparency */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+    /*table-layout: fixed; !* This ensures the table respects your column widths *!*/
+}
+.table td, .table th {
+    white-space: normal; /* Overrides the previous nowrap */
+    overflow-wrap: break-word; /* Allows long words to wrap and break */
+    word-wrap: break-word; /* For older browsers */
+    max-width: 100px; /* Adjust based on your needs; ensures content wrapping */
+}
+
+.table-responsive {
+    overflow-x: auto;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #f5f5f5; /* Light grey, adjust color as needed */
+}
+
+
+/*.table td, .table th {*/
+/*    white-space: nowrap;*/
+/*    text-overflow: ellipsis;*/
+/*    max-width: 150px; !* Adjust based on your needs *!*/
+/*}*/
+
+
+@media screen and (max-width: 768px) {
+    .table-container {
+        max-width: 100%; /* Updated to occupy 100% of the available space */
+        padding: 2px; /* Optional: Adjust padding as needed for smaller screens */
+    }
+}
+
+
+.custom-table-header {
+    background-color: #343a40; /* Deep dark gray */
+    color: white;
+}
+
+.table-striped tbody tr:hover {
+    background-color: #bcbcbc; /* Slight dark on hover */
+}
+
+.rounded-table {
+    border-radius: 0.75rem;
+    overflow: hidden;
+}
+
+.shadow-table {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+
+
+.table-link {
+    color: black; /* Black links, as requested */
+    text-decoration: none; /* Optional: removes underline from links */
+    .table-link:hover {
+        color: #555; /* Darker color on hover for links */
+        /* Media query for devices with a max width of 768px, commonly used for tablets and mobile devices */
+    }
 }
 
 

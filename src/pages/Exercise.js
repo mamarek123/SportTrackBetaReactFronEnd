@@ -3,10 +3,26 @@ import { Link, useLocation } from "react-router-dom";
 import axios from 'axios';
 import "./Exercise.css";
 
+import config from '../config/config';
+
+const API_URL = config.API_URL;
 
 export default function Exercise() {
 
-    const [newTraining, setNewTraining] = useState({date: '', repsAndWeights: '', note: ''});
+    const getTodayDate = () => {
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = (`0${today.getMonth() + 1}`).slice(-2); // Adding 1 because getMonth() returns 0-11
+        const day = (`0${today.getDate()}`).slice(-2);
+        return `${year}.${month}.${day}`;
+    };
+
+    // Initialize newTraining state with today's date
+    const [newTraining, setNewTraining] = useState({
+        date: getTodayDate(), // Set default date to today
+        repsAndWeights: '',
+        note: ''
+    });
 
     const isValidDate = (dateString) => {
         const regEx = /^\d{4}\.\d{2}\.\d{2}$/;
@@ -30,7 +46,7 @@ export default function Exercise() {
         }
 
         const [year, month, day] = newTraining.date.split('.').map(num => parseInt(num, 10));
-        const dateTime = new Date(year, month - 1, day).toISOString();
+        const dateTime = new Date(year, month - 1, day, 12, 0).toISOString();
 
         const trainingData = {
             exerciseName: exerciseName,
@@ -38,9 +54,9 @@ export default function Exercise() {
             note: newTraining.note,
             dateTime: dateTime,
         };
-
+        console.log(dateTime);
         try {
-            await axios.post('http://ec2-3-70-127-40.eu-central-1.compute.amazonaws.com:8000/trainings/add', trainingData, {
+            await axios.post(`${process.env.REACT_APP_API_URL}/trainings/add`, trainingData, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`,
                     'Content-Type': 'application/json',
@@ -65,7 +81,7 @@ export default function Exercise() {
         };
 
         try {
-            await axios.delete('http://ec2-3-70-127-40.eu-central-1.compute.amazonaws.com:8000/trainings/delete', {
+            await axios.delete(API_URL, {
                 data: deleteTrainingData,
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -83,7 +99,7 @@ export default function Exercise() {
     useEffect(() => {
         const fetchTrainingsForExercise = async () => {
             try {
-                const response = await axios.get('http://ec2-3-70-127-40.eu-central-1.compute.amazonaws.com:8000/trainings/ForExercise', {
+                const response = await axios.get(API_URL, {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem('token')}`,
                     },
@@ -106,8 +122,8 @@ export default function Exercise() {
     return (
         <div className="table-container">
             <h2>Exercise: {exerciseName}</h2>
-            <table className="table table-striped">
-                <thead>
+            <table className="table table-striped rounded-table shadow-table">
+                <thead className="thead-dark">
                 <tr>
                     <th scope="col">Date</th>
                     <th scope="col">Reps x Weight</th>

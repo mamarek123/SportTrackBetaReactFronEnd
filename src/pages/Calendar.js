@@ -69,7 +69,7 @@ const Calendar = () => {
                     <h2 className="flex-grow-1 text-center">{monthNames[month]} {year}</h2>
                     <button className="btn btn-outline-primary" onClick={() => navigateMonth(1)}>{"Next >"}</button>
                 </div>
-                <table className="table table-bordered table-responsive">
+                <table className="table table-striped rounded-table shadow-table table-bordered table-responsive">
                     <thead className="thead-dark">
                     <tr>
                         <th scope="col">Mon</th>

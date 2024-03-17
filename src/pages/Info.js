@@ -3,7 +3,7 @@ import './info.css';
 
 export default function Home() {
     return (
-        <div className="info-container">
+        <div className="table-container">
             <h2>App made by:</h2>
             <p>Marek Szkutnik</p>
             <p>and</p>
