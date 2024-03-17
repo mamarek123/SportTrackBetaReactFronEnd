@@ -3,6 +3,10 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import config from '../config/config';
+
+const API_URL = config.API_URL;
+
 const Exercises = () => {
     const [exercises, setExercises] = useState([]);
 
@@ -10,7 +14,7 @@ const Exercises = () => {
         const fetchExercises = async () => {
             try {
                 const token = localStorage.getItem('token');
-                const response = await axios.get('http://localhost:8080/trainings/user/exercises', {
+                const response = await axios.get(API_URL, {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
@@ -26,34 +30,9 @@ const Exercises = () => {
 
     return (
         <div className="table-container">
-            <style>
-                {`
-                    .custom-table-header {
-                        background-color: #343a40; /* Deep dark gray */
-                        color: white;
-                    }
-                    .table-striped tbody tr:hover {
-                        background-color: #bcbcbc; /* Slight dark on hover */
-                    }
-                    .rounded-table {
-                        border-radius: 0.75rem;
-                        overflow: hidden;
-                    }
-                    .shadow-table {
-                        box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
-                    }
-                    .table-link {
-                        color: black; /* Black links, as requested */
-                        text-decoration: none; /* Optional: removes underline from links */
-                    }
-                    .table-link:hover {
-                        color: #555; /* Darker color on hover for links */
-                    }
-                `}
-            </style>
             <h2>Here are all exercises you saved</h2>
-            <table className="table table-striped rounded-table shadow-table" style={{ backgroundColor: 'darkgray' }}>
-                <thead className="custom-table-header">
+            <table className="table table-striped rounded-table shadow-table" >
+                <thead className="thead-dark">
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Exercise:</th>

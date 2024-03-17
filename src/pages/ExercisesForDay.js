@@ -1,7 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import {Link, useLocation} from "react-router-dom";
 import axios from 'axios';
-import "./ExercisesForDay.css";
+
+import config from '../config/config';
+
+const API_URL = config.API_URL;
 
 export default function ExercisesForDay() {
     const location = useLocation();
@@ -23,7 +26,7 @@ export default function ExercisesForDay() {
             if (isValidDate(dateParam)) {
                 const dateParts = dateParam.split('-');
                 try {
-                    const response = await axios.get('http://localhost:8080/trainings/ForDay', {
+                    const response = await axios.get(API_URL, {
                         headers: {
                             Authorization: `Bearer ${localStorage.getItem('token')}`,
                         },
@@ -65,7 +68,7 @@ export default function ExercisesForDay() {
         };
 
         try {
-            const response = await axios.post('http://localhost:8080/trainings/add', trainingData, {
+            const response = await axios.post(API_URL, trainingData, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`,
                     'Content-Type': 'application/json'
@@ -91,7 +94,7 @@ export default function ExercisesForDay() {
         };
 
         try {
-            await axios.delete('http://localhost:8080/trainings/delete', {
+            await axios.delete(API_URL, {
                 data: deleteTrainingData,
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -115,8 +118,8 @@ export default function ExercisesForDay() {
     return (
         <div className="table-container">
             <h2>Here's what you trained on {formattedDate}</h2>
-            <table className="table table-striped">
-                <thead>
+            <table className="table table-striped rounded-table shadow-table">
+                <thead className="thead-dark">
                 <tr>
                     <th scope="col">Exercise</th>
                     <th scope="col">Reps x Weight</th>
@@ -128,7 +131,7 @@ export default function ExercisesForDay() {
                 {trainings.map((training, index) => (
                     <tr key={index}>
                         <td>
-                            <Link to={`/Exercise?name=${encodeURIComponent(training.exerciseName)}`}>
+                            <Link to={`/Exercise?name=${encodeURIComponent(training.exerciseName)}`} className="table-link">
                                 {training.exerciseName}
                             </Link>
                         </td>

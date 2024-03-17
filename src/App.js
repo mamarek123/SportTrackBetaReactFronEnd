@@ -1,7 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import Navbar from "./layout/Navbar";
 import {useEffect, useState} from "react";
 import AuthService from "./services/AuthService";
 import {Route, BrowserRouter as Router, Routes} from "react-router-dom";
@@ -13,6 +12,7 @@ import Exercises from "./pages/Exercises";
 import ExercisesForDay from "./pages/ExercisesForDay";
 import Exercise from"./pages/Exercise"
 import Info from "./pages/Info"
+import NavbarExample from "./layout/Navbar";
 
 
 const App = () => {
@@ -32,7 +32,7 @@ const App = () => {
 
     return (
         <Router>
-            <Navbar isLoggedIn={isLoggedIn}  handleLogout={handleLogout} />
+            <NavbarExample isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/home" element={<Home />} />

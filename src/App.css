@@ -7,6 +7,23 @@
   pointer-events: none;
 }
 
+@media (max-width: 768px) {
+  .App-header {
+    font-size: calc(8px + 2vmin);
+  }
+
+  .App-logo {
+    height: 30vmin;
+  }
+
+  /* Adjust text alignment, padding, and margins for smaller screens */
+  .App {
+    text-align: left;
+    padding: 10px;
+  }
+}
+
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

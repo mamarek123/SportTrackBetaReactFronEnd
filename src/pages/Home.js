@@ -1,10 +1,9 @@
-// components/Calendar.js
 import './home.css';
 import React from 'react';
 
 export default function Home() {
     return (
-        <div className="home-container">
+        <div className="table-container">
             <h1>"Nothing Will Work...</h1>
             <div className="quote-container">
                 <h1>Unless You Do"</h1>
@@ -19,7 +18,7 @@ export default function Home() {
                 journey.</p>
 
             <div className="cta-container">
-                <iframe width="560" height="315"
+                <iframe
                         src="https://www.youtube.com/embed/eaRQF-7hhmo?si=XSOe6xwMU5zfKtRU&amp;controls=0"
                         title="YouTube video player" frameBorder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
