@@ -6,7 +6,7 @@ const API_URL = config.API_URL;
 class AuthService {
     login(username, password) {
         return axios
-            .post(API_URL + 'token', { username, password })
+            .post(API_URL + '/token', { username, password })
             .then(response => {
                 if (response.data.token) {
                     localStorage.setItem('user', JSON.stringify(response.data.username));
@@ -26,7 +26,8 @@ class AuthService {
     }
 
     register(username, password) {
-        return axios.post(API_URL + 'register', {
+        console.log(API_URL);
+        return axios.post(API_URL + '/register', {
             username,
             password,
         });

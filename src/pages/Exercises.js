@@ -14,7 +14,7 @@ const Exercises = () => {
         const fetchExercises = async () => {
             try {
                 const token = localStorage.getItem('token');
-                const response = await axios.get(API_URL, {
+                const response = await axios.get(API_URL + '/trainings/user/exercises', {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },

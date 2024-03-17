@@ -36,7 +36,7 @@ export default function Exercise() {
 
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
-    const exerciseName = searchParams.get('name');
+    const exercise = searchParams.get('name');
     const [trainings, setTrainings] = useState([]);
 
     const handleAddTraining = async () => {
@@ -49,19 +49,20 @@ export default function Exercise() {
         const dateTime = new Date(year, month - 1, day, 12, 0).toISOString();
 
         const trainingData = {
-            exerciseName: exerciseName,
+            exerciseName: exercise,
             repsAndWeights: newTraining.repsAndWeights,
             note: newTraining.note,
             dateTime: dateTime,
         };
-        console.log(dateTime);
         try {
-            await axios.post(`${process.env.REACT_APP_API_URL}/trainings/add`, trainingData, {
+            console.log(trainingData);
+            let axiosResponse = await axios.post(API_URL + '/trainings/add', trainingData, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`,
                     'Content-Type': 'application/json',
                 },
             });
+            console.log(axiosResponse.data);
             window.location.reload();
         } catch (error) {
             console.error('Failed to add new training:', error);
@@ -73,21 +74,22 @@ export default function Exercise() {
     const handleDelete = async (dateString) => {
         const [year, month, day] = dateString.split('.').map(num => parseInt(num, 10));
 
+        // Format the date in ISO 8601 format (YYYY-MM-DD). This might need adjustment based on your backend requirements.
+        const formattedDate = `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}T11:00:00`;
         const deleteTrainingData = {
-            exerciseName: exerciseName,
-            year: year,
-            month: month,
-            day: day,
+            exerciseName: exercise, // Assuming 'exercise' is defined somewhere in your code.
+            date: formattedDate, // This needs to match the format your backend expects for LocalDateTime.
         };
-
+        console.log(deleteTrainingData);
         try {
-            await axios.delete(API_URL, {
+            await axios.delete(API_URL + '/trainings/delete', {
                 data: deleteTrainingData,
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`,
                     'Content-Type': 'application/json',
                 },
             });
+            // Consider using a more SPA-friendly way of updating the UI, rather than reloading the page.
             window.location.reload();
         } catch (error) {
             console.error('Failed to delete training:', error);
@@ -96,15 +98,16 @@ export default function Exercise() {
     };
 
 
+
     useEffect(() => {
         const fetchTrainingsForExercise = async () => {
             try {
-                const response = await axios.get(API_URL, {
+                const response = await axios.get(API_URL + '/trainings/ForExercise', {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem('token')}`,
                     },
                     params: {
-                        exercise: exerciseName,
+                        exercise: exercise
                     },
                 });
                 setTrainings(response.data);
@@ -114,14 +117,14 @@ export default function Exercise() {
             }
         };
 
-        if (exerciseName) {
+        if (exercise) {
             fetchTrainingsForExercise();
         }
-    }, [exerciseName]);
+    }, [exercise]);
 
     return (
         <div className="table-container">
-            <h2>Exercise: {exerciseName}</h2>
+            <h2>Exercise: {exercise}</h2>
             <table className="table table-striped rounded-table shadow-table">
                 <thead className="thead-dark">
                 <tr>

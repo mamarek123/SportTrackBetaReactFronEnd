@@ -26,7 +26,7 @@ export default function ExercisesForDay() {
             if (isValidDate(dateParam)) {
                 const dateParts = dateParam.split('-');
                 try {
-                    const response = await axios.get(API_URL, {
+                    const response = await axios.get(API_URL + '/trainings/ForDay', {
                         headers: {
                             Authorization: `Bearer ${localStorage.getItem('token')}`,
                         },
@@ -58,7 +58,7 @@ export default function ExercisesForDay() {
         const dateFromUrl = new URLSearchParams(window.location.search).get('date');
 
 
-        const dateTime = `${dateFromUrl}T05:00:00`;
+        const dateTime = `${dateFromUrl}T11:00:00`;
 
         const trainingData = {
             exerciseName: newTraining.exerciseName,
@@ -68,7 +68,7 @@ export default function ExercisesForDay() {
         };
 
         try {
-            const response = await axios.post(API_URL, trainingData, {
+            const response = await axios.post(API_URL + '/trainings/add', trainingData, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`,
                     'Content-Type': 'application/json'
@@ -88,20 +88,17 @@ export default function ExercisesForDay() {
 
         const deleteTrainingData = {
             exerciseName,
-            year,
-            month: month,
-            day,
+            date: `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}T11:00:00`, // Adjust the time part if needed
         };
 
         try {
-            await axios.delete(API_URL, {
-                data: deleteTrainingData,
+            await axios.delete(API_URL + '/trainings/delete', {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`,
                     'Content-Type': 'application/json',
                 },
+                data: deleteTrainingData,
             });
-
             console.log('Training deleted successfully');
             window.location.reload();
         } catch (error) {
@@ -109,6 +106,7 @@ export default function ExercisesForDay() {
             alert('Failed to delete training. Please check console for details.');
         }
     };
+
 
 
     const formattedDate = isValidDate(dateParam)
