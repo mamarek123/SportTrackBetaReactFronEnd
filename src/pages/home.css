@@ -113,12 +113,20 @@
     }
 }
 
-body {
-    background-image: url('https://www.magic-gym.pl/images/oferta-zajecia-zorganizowane.jpg'); /* Path to your image */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+html {
+    height: 100%; /* Make sure the html element covers the full height */
 }
+
+body {
+    margin: 0; /* Remove default margin */
+    height: 100%; /* Full height */
+    background-image: url('images/background.webp'); /* Local path to your image */
+    background-size: cover; /* Cover the entire viewport */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-attachment: fixed; /* Optional: Fix the background */
+}
+
 
 .quote-container {
     display: flex;

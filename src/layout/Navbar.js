@@ -9,8 +9,9 @@ export default function Navbar({ isLoggedIn, handleLogout }) {
         navigate('/login');
     };
 
-    const currentDate = new Date().toISOString().slice(0, 10); // Gets date in YYYY-MM-DD format
-    const username = JSON.parse(localStorage.getItem('user')); // Assuming this safely handles null
+    // Gets today's date in YYYY-MM-DD format
+    const currentDate = new Date().toISOString().slice(0, 10);
+    const username = JSON.parse(localStorage.getItem('user')); // Ensure null is handled
 
     return (
         <div>
@@ -49,6 +50,10 @@ export default function Navbar({ isLoggedIn, handleLogout }) {
                                 <li className="nav-item">
                                     <Link className="nav-link active" to="/Exercises">Exercises</Link>
                                 </li>
+                                {/* New Today navbar item */}
+                                <li className="nav-item">
+                                    <Link className="nav-link active" to={`/ExercisesForDay?date=${currentDate}`}>Today</Link>
+                                </li>
                             </>
                         )}
                         <li className="nav-item">
@@ -73,3 +78,4 @@ export default function Navbar({ isLoggedIn, handleLogout }) {
         </div>
     );
 }
+
