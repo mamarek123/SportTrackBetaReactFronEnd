@@ -71,25 +71,21 @@ export default function Exercise() {
     };
 
 
-    const handleDelete = async (dateString) => {
-        const [year, month, day] = dateString.split('.').map(num => parseInt(num, 10));
-
-        // Format the date in ISO 8601 format (YYYY-MM-DD). This might need adjustment based on your backend requirements.
-        const formattedDate = `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}T11:00:00`;
+    const handleDelete = async (trainingId) => {
         const deleteTrainingData = {
-            exerciseName: exercise, // Assuming 'exercise' is defined somewhere in your code.
-            date: formattedDate, // This needs to match the format your backend expects for LocalDateTime.
+            id: trainingId, // Use the ID to delete
         };
-        console.log(deleteTrainingData);
+
         try {
             await axios.delete(API_URL + '/trainings/delete', {
-                data: deleteTrainingData,
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`,
                     'Content-Type': 'application/json',
                 },
+                data: deleteTrainingData,
             });
-            // Consider using a more SPA-friendly way of updating the UI, rather than reloading the page.
+            console.log('Training deleted successfully');
+            // Consider using state to trigger a re-fetch or remove the item from the list instead of reloading.
             window.location.reload();
         } catch (error) {
             console.error('Failed to delete training:', error);
@@ -128,7 +124,7 @@ export default function Exercise() {
             <table className="table table-striped rounded-table shadow-table">
                 <thead className="thead-dark">
                 <tr>
-                    <th scope="col">Date</th>
+                    <th scope="col">Date & Time</th>
                     <th scope="col">Reps x Weight</th>
                     <th scope="col">Note</th>
                     <th scope="col">Actions</th>
@@ -137,11 +133,11 @@ export default function Exercise() {
                 <tbody>
                 {trainings.map((training, index) => (
                     <tr key={index}>
-                        <td>{training.dateTime.split('T')[0].replace(/-/g, '.')}</td>
+                        <td>{new Date(training.dateTime).toLocaleString()}</td>
                         <td>{training.repsAndWeights}</td>
                         <td>{training.note}</td>
                         <td>
-                            <button className="btn btn-danger" onClick={() => handleDelete(training.dateTime.split('T')[0].replace(/-/g, '.'))}>Delete</button>
+                            <button className="btn btn-danger" onClick={() => handleDelete(training.id)}>Delete</button>
                         </td>
                     </tr>
                 ))}

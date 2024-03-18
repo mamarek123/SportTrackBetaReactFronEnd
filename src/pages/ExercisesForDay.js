@@ -11,7 +11,21 @@ export default function ExercisesForDay() {
     const searchParams = new URLSearchParams(location.search);
     const dateParam = searchParams.get('date');
     const [trainings, setTrainings] = useState([]);
-    const [newTraining, setNewTraining] = useState({exerciseName: '', repsAndWeights: '', note: ''});
+    // Initialize newTraining state with an additional date property
+
+    const getCurrentTime = () => {
+        const now = new Date();
+        const hours = now.getHours().toString().padStart(2, '0');
+        const minutes = now.getMinutes().toString().padStart(2, '0');
+        return `${hours}:${minutes}`;
+    };
+
+    const [newTraining, setNewTraining] = useState({
+        exerciseName: '',
+        repsAndWeights: '',
+        note: '',
+        time: getCurrentTime(), // Initialize with current time
+    });
 
     const isValidDate = (dateString) => {
         const regEx = /^\d{4}-\d{2}-\d{2}$/;
@@ -49,22 +63,18 @@ export default function ExercisesForDay() {
 
 
     const handleAddTraining = async () => {
-        if (!newTraining.exerciseName || !newTraining.repsAndWeights || !newTraining.note) {
-            alert('Please fill in all fields');
+        if (!newTraining.exerciseName || !newTraining.repsAndWeights || !newTraining.note || !newTraining.time) {
+            alert('Please fill in all fields, including the time for the training session.');
             return;
         }
 
-
-        const dateFromUrl = new URLSearchParams(window.location.search).get('date');
-
-
-        const dateTime = `${dateFromUrl}T11:00:00`;
+        const dateTime = `${dateParam}T${newTraining.time}`;
 
         const trainingData = {
             exerciseName: newTraining.exerciseName,
             repsAndWeights: newTraining.repsAndWeights,
             note: newTraining.note,
-            dateTime: dateTime
+            dateTime: dateTime,
         };
 
         try {
@@ -82,13 +92,10 @@ export default function ExercisesForDay() {
         }
     };
 
-    const handleDelete = async (exerciseName) => {
-        const dateFromUrl = new URLSearchParams(window.location.search).get('date');
-        const [year, month, day] = dateFromUrl.split('-').map(num => parseInt(num, 10));
 
+    const handleDelete = async (trainingId) => {
         const deleteTrainingData = {
-            exerciseName,
-            date: `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}T11:00:00`, // Adjust the time part if needed
+            id: trainingId, // Use the ID directly
         };
 
         try {
@@ -109,6 +116,7 @@ export default function ExercisesForDay() {
 
 
 
+
     const formattedDate = isValidDate(dateParam)
         ? new Date(dateParam).toLocaleDateString()
         : 'Invalid date';
@@ -119,6 +127,7 @@ export default function ExercisesForDay() {
             <table className="table table-striped rounded-table shadow-table">
                 <thead className="thead-dark">
                 <tr>
+                    <th scope="col">Time</th>
                     <th scope="col">Exercise</th>
                     <th scope="col">Reps x Weight</th>
                     <th scope="col">Note</th>
@@ -128,6 +137,7 @@ export default function ExercisesForDay() {
                 <tbody>
                 {trainings.map((training, index) => (
                     <tr key={index}>
+                        <td>{new Date(training.dateTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</td>
                         <td>
                             <Link to={`/Exercise?name=${encodeURIComponent(training.exerciseName)}`} className="table-link">
                                 {training.exerciseName}
@@ -136,13 +146,19 @@ export default function ExercisesForDay() {
                         <td>{training.repsAndWeights}</td>
                         <td>{training.note}</td>
                         <td>
-                            <button className="btn btn-danger"
-                                    onClick={() => handleDelete(training.exerciseName)}>Delete
-                            </button>
+                            <button className="btn btn-danger" onClick={() => handleDelete(training.id)}>Delete</button>
                         </td>
                     </tr>
                 ))}
                 <tr>
+                    <td>
+                        <input
+                            type="time"
+                            className="form-control"
+                            value={newTraining.time || ''}
+                            onChange={e => setNewTraining({...newTraining, time: e.target.value})}
+                        />
+                    </td>
                     <td><input type="text" className="form-control" value={newTraining.exerciseName}
                                onChange={e => setNewTraining({...newTraining, exerciseName: e.target.value})}/></td>
                     <td><input type="text" className="form-control" value={newTraining.repsAndWeights}
